@@ -8,3 +8,5 @@ turn_speed = 0
 currently_moving = false
 
 collision_array = [ obj_obstacle ]
+
+cargo = 0;
