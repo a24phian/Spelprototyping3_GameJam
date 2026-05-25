@@ -70,11 +70,11 @@
   "resourceVersion":"2.0",
   "RoomOrderNodes":[
     {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
-    {"roomId":{"name":"rm_level_1","path":"rooms/rm_level_1/rm_level_1.yy",},},
-    {"roomId":{"name":"rm_level_template","path":"rooms/rm_level_template/rm_level_template.yy",},},
     {"roomId":{"name":"rm_main_menu","path":"rooms/rm_main_menu/rm_main_menu.yy",},},
+    {"roomId":{"name":"rm_level_1","path":"rooms/rm_level_1/rm_level_1.yy",},},
     {"roomId":{"name":"rm_level_2","path":"rooms/rm_level_2/rm_level_2.yy",},},
     {"roomId":{"name":"rm_level_3","path":"rooms/rm_level_3/rm_level_3.yy",},},
+    {"roomId":{"name":"rm_level_template","path":"rooms/rm_level_template/rm_level_template.yy",},},
   ],
   "templateType":"game",
   "TextureGroups":[
