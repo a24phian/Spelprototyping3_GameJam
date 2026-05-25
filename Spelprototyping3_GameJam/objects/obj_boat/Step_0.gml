@@ -35,6 +35,7 @@ if keyboard_check(ord("D")) && currently_moving or keyboard_check(vk_right) && c
 	if turn_speed < -MAX_TURN_SPEED { turn_speed = -MAX_TURN_SPEED }
 }
 
+//Speed stuff for collision
 speed = current_speed
 var _dx = hspeed
 var _dy = vspeed
@@ -55,9 +56,14 @@ if place_meeting(x, y, collision_array) {
 	image_angle = direction
 }
 
-var _collided = move_and_collide(_dx, _dy, collision_array, 20)
-if array_length(_collided) > 0 && current_speed > MAX_SPEED - DROP_THRESHOLD { event_user(1) }
-if array_length(_collided) > 0 { current_speed *= 0.85 }
+//Collide
+var _collide_x = move_and_collide(_dx, 0, collision_array, 20)
+var _collide_y = move_and_collide(0, _dy, collision_array, 20)
+
+var _did_collide = array_length(_collide_x) > 0 or array_length(_collide_y) > 0
+
+if _did_collide && current_speed > MAX_SPEED - DROP_THRESHOLD { event_user(1) }
+if _did_collide { current_speed *= 0.85 }
 
 //Decelleration
 if !currently_moving { 
