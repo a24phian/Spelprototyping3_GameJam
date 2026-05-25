@@ -7,4 +7,4 @@ turn_speed = 0
 
 currently_moving = false
 
-collision_array = [ obj_obstacle, obj_vision_zone ]
+collision_array = [ obj_obstacle ]
