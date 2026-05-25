@@ -32,7 +32,7 @@ switch (state) {
 		// Track the player
 		if (PlayerInVisionZone()) {
 			var _dir = point_direction(xstart, ystart, obj_boat.x, obj_boat.y);
-			MoveToTargetPoint(lengthdir_x(wanderRadius, _dir), lengthdir_y(wanderRadius, _dir));
+			MoveToTargetPoint(xstart + lengthdir_x(wanderRadius, _dir), ystart + lengthdir_y(wanderRadius, _dir));
 			
 			visionDirection += angle_difference(point_direction(x, y, obj_boat.x, obj_boat.y), visionDirection) / 15;
 			visionZone.direction = visionDirection;
