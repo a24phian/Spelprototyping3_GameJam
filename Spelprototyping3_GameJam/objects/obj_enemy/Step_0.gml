@@ -92,7 +92,10 @@ switch (state) {
 				}
 			}
 			
-			state = "searching";
+			with (obj_enemy) {
+				state = "searching";
+				detection = 0
+			}
 		}
 }
 
