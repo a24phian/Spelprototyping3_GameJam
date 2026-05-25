@@ -11,3 +11,8 @@ if follow != noone {
 	
 	else { speed = 0 }
 }
+
+else {
+	
+	move_and_collide(hspeed, vspeed, collision_array)
+}
