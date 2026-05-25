@@ -1,10 +1,6 @@
 switch (state) {
 	case "searching":
 		// Look around at random points for random amounts of time
-		visionDirection += angle_difference(visionDirectionTarget, visionDirection) / 15;
-		visionZone.direction = visionDirection;
-		
-		// Angle vision zone
 		if (angle_difference(visionDirectionTarget, visionDirection) <= 1) {
 			if (visionLingerTime-- <= 0) {
 				visionDirectionTarget = random_range(0, 360);
@@ -12,15 +8,10 @@ switch (state) {
 			}
 		}
 		
-		// Use vision zone for detection
-		with (visionZone) {
-			if (place_meeting(x, y, obj_boat)) {
-				other.detection = min(other.detection + other.detectionSpeed, 1);
-			}
-			else {
-				other.detection = max(other.detection - other.detectionSpeed, 0);
-			}
-		}
+		visionDirection += angle_difference(visionDirectionTarget, visionDirection) / 15;
+		visionZone.direction = visionDirection;
+		
+		VisionZoneDetection();
 		
 		// Change state
 		if (detection > 0) {
@@ -28,26 +19,28 @@ switch (state) {
 		}
 		break;
 	case "alert":
-		visionDirection += angle_difference(visionDirectionTarget, visionDirection) / 5;
-		visionZone.direction = visionDirection;
-		
-		// Angle vision zone
-		if (angle_difference(visionDirectionTarget, visionDirection) <= 1) {
-			if (visionLingerTime-- <= 0) {
-				visionDirectionTarget += random_range(-visionDirectionRangeAlert, visionDirectionRangeAlert);
-				visionLingerTime = random_range(visionLingerTimeMinAlert, visionLingerTimeMaxAlert);
+		// Track the player
+		if (PlayerInVisionZone()) {
+			visionDirection += angle_difference(point_direction(x, y, obj_boat.x, obj_boat.y), visionDirection) / 15;
+			visionZone.direction = visionDirection;
+			
+			visionDirectionTarget = visionDirection;
+			visionLingerTime = random_range(visionLingerTimeMinAlert, visionLingerTimeMaxAlert);
+		}
+		// Look after the player around the direction in which they dissappeared
+		else {
+			if (angle_difference(visionDirectionTarget, visionDirection) <= 1) {
+				if (visionLingerTime-- <= 0) {
+					visionDirectionTarget += random_range(-visionDirectionRangeAlert, visionDirectionRangeAlert);
+					visionLingerTime = random_range(visionLingerTimeMinAlert, visionLingerTimeMaxAlert);
+				}
 			}
+			
+			visionDirection += angle_difference(visionDirectionTarget, visionDirection) / 5;
+			visionZone.direction = visionDirection;
 		}
 		
-		// Use vision zone for detection
-		with (visionZone) {
-			if (place_meeting(x, y, obj_boat)) {
-				other.detection = min(other.detection + other.detectionSpeed, 1);
-			}
-			else {
-				other.detection = max(other.detection - other.detectionSpeed, 0);
-			}
-		}
+		VisionZoneDetection();
 		
 		// Change state
 		if (detection == 0) {
@@ -60,6 +53,7 @@ switch (state) {
 		break;
 	case "chasing":
 		direction = point_direction(x, y, obj_boat.x, obj_boat.y);
+		image_angle = direction;
 		speed = min(speed + ACCELERATION, maxSpeed);
 		
 		visionZone.direction = direction;
@@ -69,6 +63,7 @@ switch (state) {
 		}
 }
 
-// Move vision zone
+/// Move Vision zone
 visionZone.x = x;
 visionZone.y = y;
+
