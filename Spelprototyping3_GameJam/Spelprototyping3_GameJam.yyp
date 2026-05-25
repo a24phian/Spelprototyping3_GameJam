@@ -35,6 +35,7 @@
   "name":"Spelprototyping3_GameJam",
   "resources":[
     {"id":{"name":"obj_boat","path":"objects/obj_boat/obj_boat.yy",},},
+    {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},},
     {"id":{"name":"obj_vision_zone","path":"objects/obj_vision_zone/obj_vision_zone.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
