@@ -38,6 +38,7 @@
     {"id":{"name":"obj_cargo_dropoff","path":"objects/obj_cargo_dropoff/obj_cargo_dropoff.yy",},},
     {"id":{"name":"obj_cargo_pickup","path":"objects/obj_cargo_pickup/obj_cargo_pickup.yy",},},
     {"id":{"name":"obj_cargo","path":"objects/obj_cargo/obj_cargo.yy",},},
+    {"id":{"name":"obj_dock","path":"objects/obj_dock/obj_dock.yy",},},
     {"id":{"name":"obj_enemy","path":"objects/obj_enemy/obj_enemy.yy",},},
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},},
     {"id":{"name":"obj_vision_zone","path":"objects/obj_vision_zone/obj_vision_zone.yy",},},
