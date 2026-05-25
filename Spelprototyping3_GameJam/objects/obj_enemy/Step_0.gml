@@ -69,8 +69,28 @@ switch (state) {
 		
 		visionZone.direction = direction;
 		
-		if (place_meeting(x, y, obj_boat)) {
-			game_restart();
+		var _col = instance_place(x, y, obj_boat);
+		if (_col != noone) {
+			with (_col) {
+				// Lose a barrel...
+				event_user(1);
+				
+				// ...and eespawn...
+				x = xstart;
+				y = ystart;
+				
+				speed = 0;
+				direction = 90;
+				image_angle = direction;
+				
+				// ...with cargo
+				with (obj_cargo) {
+					x = obj_boat.x;
+					y = obj_boat.y;
+				}
+			}
+			
+			state = "searching";
 		}
 }
 
