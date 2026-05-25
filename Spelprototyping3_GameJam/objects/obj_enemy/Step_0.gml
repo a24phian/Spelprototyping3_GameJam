@@ -85,8 +85,10 @@ switch (state) {
 				
 				// ...with cargo
 				with (obj_cargo) {
-					x = obj_boat.x;
-					y = obj_boat.y;
+					if follow != noone {
+						x = obj_boat.x;
+						y = obj_boat.y;
+					}
 				}
 			}
 			
