@@ -25,9 +25,6 @@ if keyboard_check(ord("A")) && currently_moving or keyboard_check(vk_left) && cu
 	
 	if turn_speed > MAX_TURN_SPEED { turn_speed = MAX_TURN_SPEED }
 	if turn_speed < -MAX_TURN_SPEED { turn_speed = -MAX_TURN_SPEED }
-	
-	direction += turn_speed
-	image_angle = direction
 }
 
 //Right
@@ -36,33 +33,22 @@ if keyboard_check(ord("D")) && currently_moving or keyboard_check(vk_right) && c
 	
 	if turn_speed > MAX_TURN_SPEED { turn_speed = MAX_TURN_SPEED }
 	if turn_speed < -MAX_TURN_SPEED { turn_speed = -MAX_TURN_SPEED }
-	
-	direction += turn_speed
-	image_angle = direction
 }
 
-if direction > 360 { direction -= 360 }
-if direction < -360 { direction += 360 }
+//Update direction
+direction += turn_speed
 
-////Direction
-//if currently_moving {
-//	//Update direction facing in
-//	facing_direction += turn_speed
-//	image_angle = facing_direction
+//No overflow
+if direction >= 360 { direction = 0 }
+if direction <= -360 { direction = 0 }
 
-//	//Find difference between moving direction and facing direction
-//	var _diff = direction - facing_direction
-//	direction_turning = _diff / 5
-
-//	//Change direction
-//	direction += direction_turning
-//	if direction - facing_direction < 1 { direction = facing_direction }
-//}
+//Update facing
+image_angle = direction
 
 //Decelleration
 if !currently_moving { 
 	speed *= DECELLERATION
-	turn_speed *= DECELLERATION * 2
+	turn_speed *= DECELLERATION
 }
 
 else { currently_moving = false }
