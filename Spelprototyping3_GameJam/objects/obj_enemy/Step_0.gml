@@ -1,10 +1,20 @@
 switch (state) {
 	case "searching":
+		// Wander around starting position
+		MoveToTargetPoint(wanderTargetX, wanderTargetY);
+		
+		if (distance_to_point(wanderTargetX, wanderTargetY) <= 0) {
+			if (wanderLingerTime-- <= 0) {
+				SetRandomWanderTargetPoint();
+				wanderLingerTime = irandom_range(wanderLingerTimeMin, wanderLingerTimeMax);
+			}
+		}
+		
 		// Look around at random points for random amounts of time
 		if (angle_difference(visionDirectionTarget, visionDirection) <= 1) {
 			if (visionLingerTime-- <= 0) {
 				visionDirectionTarget = random_range(0, 360);
-				visionLingerTime = random_range(visionLingerTimeMin, visionLingerTimeMax);
+				visionLingerTime = irandom_range(visionLingerTimeMin, visionLingerTimeMax);
 			}
 		}
 		
@@ -21,11 +31,14 @@ switch (state) {
 	case "alert":
 		// Track the player
 		if (PlayerInVisionZone()) {
+			var _dir = point_direction(xstart, ystart, obj_boat.x, obj_boat.y);
+			MoveToTargetPoint(lengthdir_x(wanderRadius, _dir), lengthdir_y(wanderRadius, _dir));
+			
 			visionDirection += angle_difference(point_direction(x, y, obj_boat.x, obj_boat.y), visionDirection) / 15;
 			visionZone.direction = visionDirection;
 			
 			visionDirectionTarget = visionDirection;
-			visionLingerTime = random_range(visionLingerTimeMinAlert, visionLingerTimeMaxAlert);
+			visionLingerTime = irandom_range(visionLingerTimeMinAlert, visionLingerTimeMaxAlert);
 		}
 		// Look after the player around the direction in which they dissappeared
 		else {
@@ -52,9 +65,7 @@ switch (state) {
 		}
 		break;
 	case "chasing":
-		direction = point_direction(x, y, obj_boat.x, obj_boat.y);
-		image_angle = direction;
-		speed = min(speed + ACCELERATION, maxSpeed);
+		MoveToTargetPoint(obj_boat.x, obj_boat.y);
 		
 		visionZone.direction = direction;
 		
