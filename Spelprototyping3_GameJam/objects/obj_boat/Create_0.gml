@@ -1,9 +1,10 @@
 ///@description Variables
 
-facing_direction = 0
-moving_direction = 0
+direction = 90
 
-direction_turning = 1
+current_speed = 0
 turn_speed = 0
 
 currently_moving = false
+
+collision_array = [ obj_obstacle, obj_vision_zone ]
