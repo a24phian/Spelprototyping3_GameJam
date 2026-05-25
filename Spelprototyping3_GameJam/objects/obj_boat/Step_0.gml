@@ -21,15 +21,13 @@ if keyboard_check(ord("S")) or keyboard_check(vk_down) {
 
 //Left
 if keyboard_check(ord("A")) && currently_moving or keyboard_check(vk_left) && currently_moving {
-	
 	turn_speed += TURN_ACCELERATION
 	
 	if turn_speed > MAX_TURN_SPEED { turn_speed = MAX_TURN_SPEED }
 }
 
 //Right
-if keyboard_check(ord("A")) && currently_moving or keyboard_check(vk_left) && currently_moving {
-	
+if keyboard_check(ord("D")) && currently_moving or keyboard_check(vk_right) && currently_moving {
 	turn_speed -= TURN_ACCELERATION
 	
 	if turn_speed < -MAX_TURN_SPEED { turn_speed = -MAX_TURN_SPEED }
