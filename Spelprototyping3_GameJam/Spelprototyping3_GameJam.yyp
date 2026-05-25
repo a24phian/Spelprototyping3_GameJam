@@ -8,7 +8,7 @@
     "children":[],
     "name":"Default",
   },
-  "defaultScriptType":0,
+  "defaultScriptType":1,
   "Folders":[
     {"$GMFolder":"","%Name":"Animation Curves","folderPath":"folders/Animation Curves.yy","name":"Animation Curves","resourceType":"GMFolder","resourceVersion":"2.0",},
     {"$GMFolder":"","%Name":"Extensions","folderPath":"folders/Extensions.yy","name":"Extensions","resourceType":"GMFolder","resourceVersion":"2.0",},
@@ -38,6 +38,7 @@
     {"id":{"name":"obj_obstacle","path":"objects/obj_obstacle/obj_obstacle.yy",},},
     {"id":{"name":"obj_vision_zone","path":"objects/obj_vision_zone/obj_vision_zone.yy",},},
     {"id":{"name":"Room1","path":"rooms/Room1/Room1.yy",},},
+    {"id":{"name":"Constants","path":"scripts/Constants/Constants.yy",},},
     {"id":{"name":"spr_barrel","path":"sprites/spr_barrel/spr_barrel.yy",},},
     {"id":{"name":"spr_boat","path":"sprites/spr_boat/spr_boat.yy",},},
     {"id":{"name":"spr_vision_zone","path":"sprites/spr_vision_zone/spr_vision_zone.yy",},},
