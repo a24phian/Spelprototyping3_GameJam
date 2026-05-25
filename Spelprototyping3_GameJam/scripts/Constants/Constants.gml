@@ -3,6 +3,7 @@
 //Boat stuff
 #macro MAX_SPEED 4
 #macro ACCELERATION 0.05
+#macro DROP_THRESHOLD 0.5
 
 #macro MAX_TURN_SPEED 1
 #macro TURN_ACCELERATION 0.02

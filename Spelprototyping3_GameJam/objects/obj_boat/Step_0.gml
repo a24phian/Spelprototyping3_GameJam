@@ -56,6 +56,7 @@ if place_meeting(x, y, collision_array) {
 }
 
 var _collided = move_and_collide(_dx, _dy, collision_array, 20)
+if array_length(_collided) > 0 && current_speed > MAX_SPEED - DROP_THRESHOLD { event_user(1) }
 if array_length(_collided) > 0 { current_speed *= 0.85 }
 
 //Decelleration
