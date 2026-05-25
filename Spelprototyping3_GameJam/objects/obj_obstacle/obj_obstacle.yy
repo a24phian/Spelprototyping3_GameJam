@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_barrel",
+    "path":"sprites/spr_barrel/spr_barrel.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

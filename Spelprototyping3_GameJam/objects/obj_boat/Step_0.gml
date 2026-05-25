@@ -1,22 +1,22 @@
-///@Description Movement
+///@description Movement
 
 //Input
 //Forward
 if keyboard_check(ord("W")) or keyboard_check(vk_up) {
 	currently_moving = true
 	
-	speed += ACCELERATION
+	current_speed += ACCELERATION
 	
-	if speed > MAX_SPEED { speed = MAX_SPEED }
+	if current_speed > MAX_SPEED { current_speed = MAX_SPEED }
 }
 
 //Backward
 if keyboard_check(ord("S")) or keyboard_check(vk_down) {
 	currently_moving = true
 	
-	speed -= BACKWARDS_ACCELERATION
+	current_speed -= BACKWARDS_ACCELERATION
 	
-	if speed < -MAX_BACKWARDS_SPEED { speed = -MAX_BACKWARDS_SPEED }
+	if current_speed < -MAX_BACKWARDS_SPEED { current_speed = -MAX_BACKWARDS_SPEED }
 }
 
 //Left
@@ -35,6 +35,11 @@ if keyboard_check(ord("D")) && currently_moving or keyboard_check(vk_right) && c
 	if turn_speed < -MAX_TURN_SPEED { turn_speed = -MAX_TURN_SPEED }
 }
 
+speed = current_speed
+var _dx = hspeed
+var _dy = vspeed
+speed = 0
+
 //Update direction
 direction += turn_speed
 
@@ -45,6 +50,14 @@ if direction <= -360 { direction = 0 }
 //Update facing
 image_angle = direction
 
+if place_meeting(x, y, collision_array) {
+	direction -= turn_speed
+	image_angle = direction
+}
+
+move_and_collide(_dx, 0, collision_array, 20)
+move_and_collide(0, _dy, collision_array, 20)
+
 //Decelleration
 if !currently_moving { 
 	speed *= DECELLERATION
@@ -52,3 +65,10 @@ if !currently_moving {
 }
 
 else { currently_moving = false }
+
+//Temporary edge collisions
+if x < 12 { x = 12 }
+if x > room_width - 12 { x = room_width - 12 }
+
+if y < 12 { y = 12 }
+if y > room_height - 12 { y = room_height - 12 }
