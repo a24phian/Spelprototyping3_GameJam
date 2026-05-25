@@ -1,1 +1,13 @@
-//
+//Constants
+
+//Boat stuff
+#macro MAX_SPEED 10
+#macro ACCELERATION 2
+
+#macro MAX_TURN_SPEED 3
+#macro TURN_ACCELERATION 1
+
+#macro MAX_BACKWARDS_SPEED 4
+#macro BACKWARDS_ACCELERATION 1
+
+#macro DECELLERATION 0.9
