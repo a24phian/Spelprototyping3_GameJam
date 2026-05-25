@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_cargo_dropoff",
+    "path":"sprites/spr_cargo_dropoff/spr_cargo_dropoff.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }

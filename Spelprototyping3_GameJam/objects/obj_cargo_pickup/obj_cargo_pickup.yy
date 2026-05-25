@@ -27,7 +27,10 @@
   "resourceType":"GMObject",
   "resourceVersion":"2.0",
   "solid":false,
-  "spriteId":null,
+  "spriteId":{
+    "name":"spr_cargo_pickup",
+    "path":"sprites/spr_cargo_pickup/spr_cargo_pickup.yy",
+  },
   "spriteMaskId":null,
   "visible":true,
 }
