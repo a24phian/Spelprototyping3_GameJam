@@ -55,20 +55,32 @@ if place_meeting(x, y, collision_array) {
 	image_angle = direction
 }
 
-move_and_collide(_dx, 0, collision_array, 20)
-move_and_collide(0, _dy, collision_array, 20)
+var _collided = move_and_collide(_dx, _dy, collision_array, 20)
+if array_length(_collided) > 0 { current_speed *= 0.85 }
 
 //Decelleration
 if !currently_moving { 
-	speed *= DECELLERATION
+	current_speed *= DECELLERATION
 	turn_speed *= DECELLERATION
 }
 
 else { currently_moving = false }
 
 //Temporary edge collisions
-if x < 12 { x = 12 }
-if x > room_width - 12 { x = room_width - 12 }
+if x < 12 { 
+	x = 12
+	current_speed *= 0.85
+}
+if x > room_width - 12 { 
+	x = room_width - 12
+	current_speed *= 0.85
+}
 
-if y < 12 { y = 12 }
-if y > room_height - 12 { y = room_height - 12 }
+if y < 12 { 
+	y = 12
+	current_speed *= 0.85
+}
+if y > room_height - 12 { 
+	y = room_height - 12 
+	current_speed *= 0.85
+}
