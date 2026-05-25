@@ -11,7 +11,7 @@ if ds_stack_size(cargo_stack) = 0 {
 		follow = _me
 	}
 }
-//Follow previous barrel
+//Others follow previous barrel
 else {
 	//Spawn
 	var _previous = ds_stack_top(cargo_stack)
