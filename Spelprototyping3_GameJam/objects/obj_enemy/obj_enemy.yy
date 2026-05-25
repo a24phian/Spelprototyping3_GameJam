@@ -35,8 +35,8 @@
   "resourceVersion":"2.0",
   "solid":false,
   "spriteId":{
-    "name":"spr_boat",
-    "path":"sprites/spr_boat/spr_boat.yy",
+    "name":"spr_enemy",
+    "path":"sprites/spr_enemy/spr_enemy.yy",
   },
   "spriteMaskId":null,
   "visible":true,
