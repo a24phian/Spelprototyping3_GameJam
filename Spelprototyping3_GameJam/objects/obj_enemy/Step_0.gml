@@ -80,6 +80,8 @@ switch (state) {
 				y = ystart;
 				
 				speed = 0;
+				current_speed = 0;
+				turn_speed = 0;
 				direction = 90;
 				image_angle = direction;
 				
