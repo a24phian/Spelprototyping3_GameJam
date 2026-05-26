@@ -59,7 +59,6 @@ function MoveToTargetPoint(_x, _y)
 		_vSpeed = lengthdir_y(currentSpeed, _dir);
 	
 	// Collide and move
-	//Horizontal
 	if (!place_meeting(x + _hSpeed, y, collisionMap)) x += _hSpeed;
 	if (!place_meeting(x, y + _vSpeed, collisionMap)) y += _vSpeed;
 	
