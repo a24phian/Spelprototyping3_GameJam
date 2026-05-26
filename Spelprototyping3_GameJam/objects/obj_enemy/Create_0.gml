@@ -84,7 +84,7 @@ function PlayerInVisionZone() {
 	
 	mask_index = spr_vision_zone;
 	image_angle = visionDirection;
-	if (place_meeting(x, y, obj_boat)) {
+	if (place_meeting(x, y, obj_boat) && !collision_line(x, y, obj_boat.x, obj_boat.y, collisionMap, true, true)) {
 		_playerInVisionZone = true;
 	}
 	mask_index = sprite_index;
