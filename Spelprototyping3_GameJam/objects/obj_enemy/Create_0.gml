@@ -3,6 +3,8 @@ state = "searching";
 maxSpeed = MAX_SPEED * 1.15
 currentSpeed = 0;
 
+collisionMap = layer_tilemap_get_id("Tiles");
+
 // Detecion progress
 detection = 0; // Normalized between 0 and 1
 detectionGainSpeed = 1 / 140;
@@ -46,13 +48,20 @@ function SetRandomWanderTargetPoint() {
 
 function MoveToTargetPoint(_x, _y)
 {
+	// Calculate speed and direction
 	var _dir = point_direction(x, y, _x, _y),
 		_dist = point_distance(x, y, _x, _y),
 		_targetSpeed = min( min(sqrt(2 * ACCELERATION * _dist), maxSpeed), _dist );
 	
 	currentSpeed += (_targetSpeed - currentSpeed);
 	
-	move_and_collide()
+	var _hSpeed = lengthdir_x(currentSpeed, _dir),
+		_vSpeed = lengthdir_y(currentSpeed, _dir);
+	
+	// Collide and move
+	//Horizontal
+	if (!place_meeting(x + _hSpeed, y, collisionMap)) x += _hSpeed;
+	if (!place_meeting(x, y + _vSpeed, collisionMap)) y += _vSpeed;
 	
 	// Animation
 	if (currentSpeed > 0)
