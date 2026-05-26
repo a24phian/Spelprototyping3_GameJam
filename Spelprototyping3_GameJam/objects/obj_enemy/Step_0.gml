@@ -31,8 +31,9 @@ switch (state) {
 	case "alert":
 		// Track the player
 		if (PlayerInVisionZone()) {
-			var _dir = point_direction(xstart, ystart, obj_boat.x, obj_boat.y);
-			MoveToTargetPoint(xstart + lengthdir_x(wanderRadius, _dir), ystart + lengthdir_y(wanderRadius, _dir));
+			var _dir = point_direction(xstart, ystart, obj_boat.x, obj_boat.y),
+				_len = min(wanderRadius, point_distance(xstart, ystart, obj_boat.x, obj_boat.y));
+			MoveToTargetPoint(xstart + lengthdir_x(_len, _dir), ystart + lengthdir_y(_len, _dir));
 			
 			visionDirection += angle_difference(point_direction(x, y, obj_boat.x, obj_boat.y), visionDirection) / 15;
 			visionZone.direction = visionDirection;
@@ -75,7 +76,7 @@ switch (state) {
 				// Lose a barrel...
 				event_user(1);
 				
-				// ...and eespawn...
+				// ...and respawn...
 				x = xstart;
 				y = ystart;
 				
