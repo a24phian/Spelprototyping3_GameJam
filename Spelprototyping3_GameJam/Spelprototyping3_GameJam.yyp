@@ -63,6 +63,7 @@
     {"id":{"name":"spr_dock","path":"sprites/spr_dock/spr_dock.yy",},},
     {"id":{"name":"spr_enemy","path":"sprites/spr_enemy/spr_enemy.yy",},},
     {"id":{"name":"spr_life_ring","path":"sprites/spr_life_ring/spr_life_ring.yy",},},
+    {"id":{"name":"spr_meny","path":"sprites/spr_meny/spr_meny.yy",},},
     {"id":{"name":"spr_tile_map","path":"sprites/spr_tile_map/spr_tile_map.yy",},},
     {"id":{"name":"spr_vision_zone","path":"sprites/spr_vision_zone/spr_vision_zone.yy",},},
     {"id":{"name":"TileSet1","path":"tilesets/TileSet1/TileSet1.yy",},},
