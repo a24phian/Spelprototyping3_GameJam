@@ -1,5 +1,7 @@
 ///@description add text
 
+image_xscale = 2
+image_yscale = image_xscale
 draw_self()
 
 draw_set_halign(fa_center)
