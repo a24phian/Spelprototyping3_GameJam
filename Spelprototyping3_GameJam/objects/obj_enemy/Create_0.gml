@@ -1,6 +1,7 @@
 state = "searching";
 
 maxSpeed = MAX_SPEED * 1.15
+currentSpeed = 0;
 
 // Detecion progress
 detection = 0; // Normalized between 0 and 1
@@ -49,9 +50,12 @@ function MoveToTargetPoint(_x, _y)
 		_dist = point_distance(x, y, _x, _y),
 		_targetSpeed = min( min(sqrt(2 * ACCELERATION * _dist), maxSpeed), _dist );
 	
-	speed += (_targetSpeed - speed);
+	currentSpeed += (_targetSpeed - currentSpeed);
 	
-	if (speed > 0)
+	move_and_collide()
+	
+	// Animation
+	if (currentSpeed > 0)
 	{
 		direction = _dir;
 		image_angle = direction;
