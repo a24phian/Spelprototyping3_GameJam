@@ -6,10 +6,12 @@
 
 //draw_text(room_width/2, 200, "Vårt Supercoola Spel")
 
-if count >= 180 {
+if count >= 180 && !stopped {
 	image_speed = 0
+	
+	stopped = true
 }
-else {
+else if !stopped{
 	count++
 }
 
